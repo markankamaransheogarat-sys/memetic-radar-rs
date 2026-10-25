@@ -1,0 +1,31 @@
+[package]
+name = "memetic-radar-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Markan Kamaransheogarat <markan@amadeus.io>"]
+description = "High-Frequency Social Graph Viral Contagion Radar & Memetic Sentiment Arbitrage Engine"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/markankamaransheogarat-sys/memetic-radar-rs"
+
+[dependencies]
+tokio = { version = "1.40", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+petgraph = { version = "0.6", features = ["serde-1"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+axum = { version = "0.7", features = ["ws"] }
+futures-util = "0.3"
+regex = "1.10"
+anyhow = "1.0"
+dotenvy = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
